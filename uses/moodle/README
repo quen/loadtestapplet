@@ -1,0 +1,19 @@
+This is an admin report for Moodle 1.9. It tests simultaneous request
+performance.
+
+To use:
+
+1. Copy the loadtest folder into the admin/report folder within your
+   Moodle 1.9 installation.
+   
+   (Note: If looking at source repository, this folder may not contain the
+   applet jar file loadtest.[build timestamp].jar. In that case, build the
+   applet jar and place it in the loadtest folder too.)
+   
+2. Visit the /admin/ page within your Moodle installation in your browser.
+
+3. Click the Reports menu. You should see a report called 'Load test'. Click
+   this report.
+   
+4. You should see the report including the applet. Read the on-screen
+   instructions and click 'Start test' to run the performance test.

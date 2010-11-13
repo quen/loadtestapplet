@@ -1,0 +1,62 @@
+<project name="loadtestapplet" basedir="." default="jar">
+ 
+  <description>
+    Builds the load test applet.
+  </description>
+	
+	<!-- Specify the desired build folder -->
+	<property name="build" value="${java.io.tmpdir}/loadtestapplet-build"/>
+    
+  <!-- Target for jar file excluding .jar and date/timestamp -->
+  <property name="jartarget" value="${user.home}/Desktop/loadtestapplet"/>
+	
+	<!-- Version number -->
+	<property name="buildversion" value="1.0"/>
+	
+	<!-- Create fresh build folder -->
+	<target name="init">
+		<tstamp/>
+		<tstamp>
+			<format property="buildstamp" pattern="yyyy-MM-dd HH:mm:ss"/>
+		</tstamp>
+		<delete dir="${build}" quiet="true"/>
+		<mkdir dir="${build}"/>
+	</target>
+  
+  <!-- Compile Java source -->
+  <target name="compile" depends="init">
+		
+		<mkdir dir="${build}/compiled"/>
+		
+    <!-- Compile everything -->    
+    <javac srcdir="src" destdir="${build}/compiled" debug="on" source="1.5" target="1.5"/>
+  </target>
+	
+	<!-- Copy data files from source to build folder -->
+	<target name="copydata">
+	
+  	<!-- Copy actual data -->
+		<copy todir="${build}/compiled">
+			<fileset dir="src">
+				<exclude name="**/*.java"/>
+				<exclude name="**/package.html"/>
+			</fileset>
+		</copy>
+
+		<!-- Write version file -->
+		<echo file="${build}/compiled/com/leafdigital/loadtestapplet/version.txt" append="false" >${buildversion}|${buildstamp}</echo>
+		
+  </target>		
+	
+	<!-- Create jar files and sign them -->
+	<target name="jar" depends="compile,copydata">
+		
+		<mkdir dir="${build}/jar"/>
+		
+    <jar jarfile="${jartarget}.${DSTAMP}${TSTAMP}.jar" basedir="${build}/compiled">
+			<include name="com/leafdigital/**"/>
+    </jar>
+    
+	</target>   
+	
+</project>

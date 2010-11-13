@@ -1,0 +1,28 @@
+Load test applet
+================
+
+The applet can be controlled by JavaScript to carry out a planned sequence of
+GET requests (using multiple threads if necessary). It reports the time taken
+for each request, and can indicate success/failure based on the presence of
+a given regular expression.
+
+I haven't really done proper documentation, sorry - it may help to look at
+the example in the 'uses' folder, which uses the applet to load test the
+popular PHP educational application 'Moodle'. For applet parameters, look
+at the applet source. (Yes this is lame, sorry. If you need proper
+documentation, pester me.)
+
+This is released under GNU General Public License version 3. I didn't bother
+doing the proper paperwork (header comments etc). If this is important because
+you want to use it in part of another project, no problem, just let me know
+and I'll sort it out.
+
+All code copyright 2010 Samuel Marshall.
+
+
+Note:
+
+Although I do work professionally on Moodle-related projects, this applet
+and the accompanying Moodle report was developed entirely on my own time
+at home.
+
